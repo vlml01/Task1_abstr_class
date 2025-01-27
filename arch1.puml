@@ -1,0 +1,69 @@
+@startuml
+class org.example.task1_abst_class.MainController {
+- Canvas canvas
+- Button rectangleButton
+- Button circleButton
+- Button ellipseButton
+- ColorPicker colorpicker
+- double currentX
+- double currentY
+- void initialize()
+- void onRectangleClick(ActionEvent)
+- void onCircleClick(ActionEvent)
+- void onEllipseClick(ActionEvent)
+- void drawShape(Shape)
+}
+
+
+class org.example.task1_abst_class.Main {
++ void start(Stage)
++ {static} void main(String[])
+}
+
+class org.example.task1_abst_class.Rectangle {
+~ double length
+~ double width
+~ double area()
++ void draw(GraphicsContext)
++ String toString()
+}
+
+
+class org.example.task1_abst_class.Ellipse {
+~ double radiusX
+~ double radiusY
+~ double area()
++ void draw(GraphicsContext)
++ String toString()
+}
+
+
+class org.example.task1_abst_class.Circle {
+~ double radius
+~ double area()
++ void draw(GraphicsContext)
++ String toString()
+}
+
+
+abstract class org.example.task1_abst_class.Shape {
+# Color color
+# double x
+~ {abstract}double area()
+~ {abstract}void draw(GraphicsContext)
++ void setColor(Color)
+}
+
+
+
+
+javafx.application.Application <|-- org.example.task1_abst_class.Main
+org.example.task1_abst_class.Shape <|-- org.example.task1_abst_class.Rectangle
+org.example.task1_abst_class.Shape <|-- org.example.task1_abst_class.Ellipse
+org.example.task1_abst_class.Shape <|-- org.example.task1_abst_class.Circle
+MainController --> Shape
+MainController --> Rectangle
+MainController --> Circle
+MainController --> Ellipse
+Main --> MainController : uses
+@enduml
