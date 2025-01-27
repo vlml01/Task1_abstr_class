@@ -19,9 +19,9 @@ class Ellipse extends Shape {
     }
 
     @Override
-    public void draw(GraphicsContext gr) {
-        gr.setFill(color);
-        gr.fillOval(x, y, 2 * radiusX, 2 * radiusY);
+    public void draw(GraphicsContext gс) {
+        gс.setFill(color);
+        gс.fillOval(x, y, 2 * radiusX, 2 * radiusY);
     }
 
 

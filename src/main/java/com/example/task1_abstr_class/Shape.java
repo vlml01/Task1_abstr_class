@@ -8,7 +8,7 @@ abstract class Shape {
     protected double x, y;
 
     abstract double area();
-    abstract void draw(GraphicsContext gr);
+    abstract void draw(GraphicsContext gс);
 
     public Shape(Color color) {
         System.out.println("Shape constructor called");

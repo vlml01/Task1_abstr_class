@@ -19,9 +19,9 @@ class Circle extends Shape {
     }
 
     @Override
-    public void draw(GraphicsContext gr) {
-        gr.setFill(color);
-        gr.fillOval(x, y, 2 * radius, 2 * radius);
+    public void draw(GraphicsContext gс) {
+        gс.setFill(color);
+        gс.fillOval(x, y, 2 * radius, 2 * radius);
     }
 
 

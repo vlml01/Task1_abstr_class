@@ -19,9 +19,9 @@ class Rectangle extends Shape {
     }
 
     @Override
-    public void draw(GraphicsContext gr) {
-        gr.setFill(color);
-        gr.fillRect(x, y, length, width);
+    public void draw(GraphicsContext gс) {
+        gс.setFill(color);
+        gс.fillRect(x, y, length, width);
     }
 
 
