@@ -4,24 +4,17 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 class Ellipse extends Shape {
-    double radiusX;
-    double radiusY;
-
-    public Ellipse(Color color, double radiusX, double radiusY) {
-        super(color);
-        this.radiusX = radiusX;
-        this.radiusY = radiusY;
-    }
+    double radiusX = 75;
+    double radiusY = 50;
 
     @Override
-    double area() {
-        return Math.PI * radiusX * radiusY;
-    }
-
-    @Override
-    public void draw(GraphicsContext gс) {
+    public void draw(GraphicsContext gс, double x, double y) {
         gс.setFill(color);
         gс.fillOval(x, y, 2 * radiusX, 2 * radiusY);
+    }
+    @Override
+    public String toString() {
+        return "Эллипс";
     }
 
 

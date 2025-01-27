@@ -6,23 +6,18 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 class Circle extends Shape {
-    double radius;
+    double radius = 50;
 
-    public Circle(Color color, double radius) {
-        super(color);
-        this.radius = radius;
-    }
+
 
     @Override
-    double area() {
-        return Math.PI * radius * radius;
-    }
-
-    @Override
-    public void draw(GraphicsContext gс) {
+    public void draw(GraphicsContext gс, double x, double y) {
         gс.setFill(color);
         gс.fillOval(x, y, 2 * radius, 2 * radius);
     }
-
+    @Override
+    public String toString() {
+        return "Круг";
+    }
 
 }

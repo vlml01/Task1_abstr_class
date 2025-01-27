@@ -1,60 +1,59 @@
 package com.example.task1_abstr_class;
 
-
+import javafx.scene.control.ListView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.Initializable;
+import javafx.scene.control.SelectionMode;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.paint.Color;
-import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class MainController {
+public class MainController implements Initializable{
 
     @FXML
     private Canvas canvas;
-    @FXML
-    private Button rectangleButton;
-    @FXML
-    private Button circleButton;
-    @FXML
-    private Button ellipseButton;
-    @FXML
-    private ColorPicker colorpicker;
-
-    private Shape currentShape = null;
-
 
     @FXML
-    private void initialize() {
-        rectangleButton.setOnAction(this::onRectangleClick);
-        circleButton.setOnAction(this::onCircleClick);
-        ellipseButton.setOnAction(this::onEllipseClick);
-        canvas.setOnMouseClicked(this::onCanvasClick); // Добавляем обработчик кликов мыши
+    private ListView<Shape> listView;
+    @FXML
+    private ColorPicker colorPicker;
+    private GraphicsContext gc;
+    private ObservableList<Shape> content;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        gc = canvas.getGraphicsContext2D();
+        Circle circle = new Circle();
+        Rectangle rectangle = new Rectangle();
+        Ellipse ellipse = new Ellipse();
+
+        content = FXCollections.observableArrayList(circle, rectangle, ellipse);
+        listView.setItems(content);
+        listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+
     }
 
-    private void onRectangleClick(ActionEvent event) {
-        currentShape = new Rectangle(colorpicker.getValue(), 100, 50);
-    }
-
-    private void onCircleClick(ActionEvent event) {
-        currentShape = new Circle(colorpicker.getValue(), 50);
-    }
-
-    private void onEllipseClick(ActionEvent event) {
-        currentShape = new Ellipse(colorpicker.getValue(), 75, 30);
-    }
-
-    private void onCanvasClick(MouseEvent event) {
-        if (currentShape != null) {
-            GraphicsContext gc = canvas.getGraphicsContext2D();
-            currentShape.x = event.getX(); // Устанавливаем координаты из клика мыши
-            currentShape.y = event.getY();
-            currentShape.draw(gc);
-            System.out.println(currentShape.toString());
-            currentShape = null; // Сбрасываем текущую фигуру
+    public void drawShape(MouseEvent mouseEvent) {
+        int index = listView.getSelectionModel().getSelectedIndex();
+        if (index < 0){
+            return;
         }
+        Shape shape = (Shape) content.get(index).clone();
+        shape.setColor(colorPicker.getValue());
+        shape.draw(gc, mouseEvent.getX(), mouseEvent.getY());
+        System.out.println(shape.toString());
+    }
+    @FXML
+    public void handleCanvasClick(MouseEvent mouseEvent) {
+        drawShape(mouseEvent);
     }
 }

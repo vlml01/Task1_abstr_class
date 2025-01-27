@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ColorPicker?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import java.lang.*?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.task1_abstr_class.MainController"
-      prefHeight="400.0" prefWidth="600.0">
-    <children>
-        <Canvas fx:id="canvas" height="300.0" width="600.0" />
-        <HBox spacing="10" alignment="CENTER">  <!-- Добавлен HBox -->
-            <children>
-                <Button fx:id="rectangleButton" text="Прямоугольник" />
-                <Button fx:id="circleButton" text="Круг" />
-                <Button fx:id="ellipseButton" text="Эллипс" />
-            </children>
-        </HBox>
-        <ColorPicker fx:id="colorpicker" />
-    </children>
-</VBox>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.task1_abstr_class.MainController"
+            prefHeight="400.0" prefWidth="600.0">
+    <top>
+        <FlowPane alignment="CENTER_LEFT" hgap="10">
+            <ListView fx:id="listView" prefHeight="75.0" prefWidth="150.0" />
+            <ColorPicker fx:id="colorPicker" />
+        </FlowPane>
+    </top>
+    <center>
+        <Canvas fx:id="canvas" width="600" height="400" onMouseClicked="#handleCanvasClick" />
+    </center>
+</BorderPane>
