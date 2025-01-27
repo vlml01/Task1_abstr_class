@@ -8,9 +8,9 @@ import javafx.scene.paint.Color;
 class Circle extends Shape {
     double radius;
 
-    public Circle(Color color, double radius) {
+    public Circle(Color color) {
         super(color);
-        this.radius = radius;
+        this.radius = 50;
     }
 
     @Override

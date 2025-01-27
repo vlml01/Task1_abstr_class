@@ -7,10 +7,10 @@ class Rectangle extends Shape {
     double length;
     double width;
 
-    public Rectangle(Color color, double length, double width) {
+    public Rectangle(Color color) {
         super(color);
-        this.length = length;
-        this.width = width;
+        this.length = 100;
+        this.width = 50;
     }
 
     @Override

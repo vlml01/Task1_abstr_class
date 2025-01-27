@@ -7,10 +7,10 @@ class Ellipse extends Shape {
     double radiusX;
     double radiusY;
 
-    public Ellipse(Color color, double radiusX, double radiusY) {
+    public Ellipse(Color color) {
         super(color);
-        this.radiusX = radiusX;
-        this.radiusY = radiusY;
+        this.radiusX = 75;
+        this.radiusY = 30;
     }
 
     @Override
